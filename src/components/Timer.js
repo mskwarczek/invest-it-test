@@ -1,5 +1,5 @@
 import { HStack, Text, VStack } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const Timer = () => {
   const [seconds, setSeconds] = useState(0);
@@ -12,9 +12,9 @@ const Timer = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [seconds]);
 
-  const date = new Date().toTimeString();
+  const dateRef = useRef(new Date().toTimeString());
 
   return (
     <VStack gap="10px" align="left">
@@ -24,7 +24,7 @@ const Timer = () => {
       </HStack>
       <HStack>
         <Text fontWeight="bold">Time of entering the website:</Text>
-        <p>{date}</p>
+        <p>{dateRef.current}</p>
       </HStack>
     </VStack>
   );
