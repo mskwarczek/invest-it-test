@@ -23,9 +23,12 @@ export const appSlice = createSlice({
     setDarkMode(state, action) {
       state.isDarkMode = action.payload;
     },
+    addImages(state, action) {
+      state.list = state.list.concat(action.payload);
+    }
   },
 });
 
-export const { setDarkMode } = appSlice.actions;
+export const { setDarkMode, addImages } = appSlice.actions;
 
 export default appSlice.reducer;
